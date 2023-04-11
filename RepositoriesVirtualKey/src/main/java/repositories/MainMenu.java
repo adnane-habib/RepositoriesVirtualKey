@@ -9,13 +9,21 @@ public class MainMenu {
 	
 		// TODO Auto-generated method stub
 		Scanner scanner = new Scanner(System.in);
-		boolean exist = false;
+		boolean exist = true;
 		// interactive menu
+		
+		String string1 = "Hellow";
+		String string2 = "Hellow";
+		
+		System.out.println(string1+" is before "+string2 +"? "+string1.compareTo(string2));
+		
 		while ( !exist) {
 			System.out.println("Choose an option:");
 
-			System.out.println("1. Retrieve file names.");
-			System.out.println("2. Manage application users.");
+			System.out.println("1. Retrieve // search for a file.");
+			System.out.println("2. Add a new file.");
+			System.out.println("3. Delete an existing file.");
+			
 
 			System.out.println("6. Exit application.");
 			exist = true;
