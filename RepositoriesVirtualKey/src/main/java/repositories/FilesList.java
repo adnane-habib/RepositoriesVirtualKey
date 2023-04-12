@@ -15,9 +15,16 @@ public class FilesList {
 		return fileCounts;
 	}
 	
+	public void append(String fileName) 
+	{
+			// appending the elements in ascending order when location is known.						
+			append(fileName, fileCounts); 
+			
+			}
+	
 	public void append(String fileName, int position) 
 {
-		// appending the elements in ascending order.
+		// appending the elements in ascending order when location is known.
 		fileCounts++;
 		FileNode newNode = new FileNode(fileName, position);
 		if (head == null) { // Creates a new list if the list is empty
@@ -75,6 +82,7 @@ public class FilesList {
 	}
 
 	public FileNode delete(String fileName) 
+	// deleting file with file name
 	{
 		if (head==null) {
 			System.out.println("Linked list is empty, nothing to delete");
@@ -106,5 +114,36 @@ public class FilesList {
 					
 		}
 	
-	
+	public FileNode delete(int fileLocation)
+	// deleting file with file location
+	{
+		if (head==null) {
+			System.out.println("Linked list is empty, nothing to delete");
+			return null;
+		}
+		
+		if (head.getFileLocation()==fileLocation) {
+			head = head.nextNode;
+		}
+		
+		FileNode current = head;
+		FileNode previous = null;
+		
+		while(current!=null && current.getFileLocation()!=fileLocation) {
+			
+				previous = current;
+				current = current.nextNode;	
+
+		}
+				if 	(current!=null) {
+					previous.nextNode = current.nextNode;
+					System.out.println(current.getFileName() + " at "+ current.getFileLocation() +" location has been succesffully deleted.");
+					fileCounts--;
+					return current;
+				} else {
+					System.out.println("File not found, nothing to delete");
+					return null;
+				}		
+					
+		}
 }
