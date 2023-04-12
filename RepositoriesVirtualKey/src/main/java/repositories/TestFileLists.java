@@ -25,6 +25,8 @@ public class TestFileLists {
 		list.display();
 		list.delete("file3");
 		list.display();
+		list.append("file3");
+		list.display();
 	}
 
 }
