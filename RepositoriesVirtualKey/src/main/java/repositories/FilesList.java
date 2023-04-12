@@ -1,11 +1,13 @@
 package repositories;
-
-import java.util.Arrays;
+import java.util.LinkedList;
+import java.util.Queue;
+//import java.util.Arrays;
 
 public class FilesList {
 	private FileNode head;
-	private int fileCounts = 0;
-	
+	private int fileCounts = 0; // for counting the list size
+	private Queue <Integer> listofLocations = new LinkedList<>();//storing empty spots
+	//getters 
 	public FileNode getHead() 
 {
 		return head;
@@ -16,22 +18,27 @@ public class FilesList {
 		return fileCounts;
 	}
 	
+	public Queue<Integer> getListofLocations() {
+		return listofLocations;
+	}	
+	
 	public void append(String fileName) 
 	{
-			// appending the elements in ascending order when location is known.						
-		int[] listLocation = this.listofLocations();
-		
-		int location = 2;
-		//System.out.println("Im outside the while loop"+ Arrays.asList(listLocation).contains(location));
-		while (!(Arrays.binarySearch(listLocation, location)< 0)) {
-			System.out.println("Im in the while loop"+ Arrays.asList(listLocation).contains(location));
-			location++;
+			// appending the elements in ascending order.						
+		int location = fileCounts+1;
+		try {
+			location = listofLocations.remove(); // detecting if empty spots are available to maximize utilization of space
 		}
-		System.out.println("Im outside the while loop "+ Arrays.asList(listLocation).contains(location));
+		catch(Exception e) {
+			
+		}
+		
 		append(fileName, location); 
 			
 			}
 	
+
+
 	public void append(String fileName, int position) 
 	{
 		// appending the elements in ascending order when location is known.
@@ -78,7 +85,7 @@ public class FilesList {
 		System.out.println(newNode.getFileName()+" successfully added");
 		}
 	
-	public void display() 
+	public void display() // for displaying list content
 	{
 		System.out.println("There are "+ getListSize() + " in the list.");
 		FileNode current = head;
@@ -100,7 +107,11 @@ public class FilesList {
 		}
 		
 		if (head.getFileName()==fileName) {
+			FileNode temp = head;
 			head = head.nextNode;
+			listofLocations.offer(head.getFileLocation()); // recording empty location 
+			fileCounts--; // decrement counter
+			return temp;
 		}
 		
 		FileNode current = head;
@@ -114,6 +125,7 @@ public class FilesList {
 		}
 				if 	(current!=null) {
 					previous.nextNode = current.nextNode;
+					listofLocations.offer(current.getFileLocation());
 					System.out.println(fileName + " has been succesffully deleted.");
 					fileCounts--;
 					return current;
@@ -133,7 +145,12 @@ public class FilesList {
 		}
 		
 		if (head.getFileLocation()==fileLocation) {
+			FileNode temp = head;
 			head = head.nextNode;
+			fileCounts--;// updating counter
+			listofLocations.offer(head.getFileLocation());//recording empty location
+			return temp;
+			
 		}
 		
 		FileNode current = head;
@@ -149,6 +166,7 @@ public class FilesList {
 					previous.nextNode = current.nextNode;
 					System.out.println(current.getFileName() + " at "+ current.getFileLocation() +" location has been succesffully deleted.");
 					fileCounts--;
+					listofLocations.offer(current.getFileLocation());
 					return current;
 				} else {
 					System.out.println("File not found, nothing to delete");
@@ -158,7 +176,7 @@ public class FilesList {
 		}
 	
 	public FileNode[] listofNodes()
-	{
+	{ // for troubleshooting, to display the list of nodes
 		FileNode[] listofNodes ;
 		
 		if (head == null) {
@@ -179,7 +197,7 @@ public class FilesList {
 	}
 	
 	public String[] listofFiles()
-	{
+	{// for troubleshooting, to display the list of files
 		String[] listofFiles ;
 		
 		if (head == null) {
@@ -200,7 +218,7 @@ public class FilesList {
 	}
 	
 	public int[] listofLocations()
-	{
+	{// for troubleshooting, to display the list of occupied locations
 		int[] listofLocations ;
 		
 		if (head == null) {

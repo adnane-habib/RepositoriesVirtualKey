@@ -8,47 +8,52 @@ public class TestFileLists {
 		// TODO Auto-generated method stub
 		
 		FilesList list = new FilesList();
-		list.append("file8", 80);
-		list.append("file6", 160);
-		list.append("file7", 270);
-		list.append("file5", 50);
+		list.append("file8");
+		list.append("file6");
+		list.append("file7");
+		list.append("file5");
 
 		
-		list.display();
+		//list.display();
 		
 
-		list.append("file2", 23);
-		list.append("file3", 322);
-		list.append("file4", 1);
-		list.append("file1", 9);
+		list.append("file2");
+		list.append("file3");
+		list.append("file4");
+		list.append("file1");
 		
-		list.display();
+		//list.display();
 
-		list.delete("file3");
+		//list.delete("file3");
 
-		list.display();
+		//list.display();
 
-		list.display();
-		System.out.println();
-		System.out.println();
+		//list.display();
+		//System.out.println();
+		//System.out.println();
 		list.append("file40");
 		list.display();
-		System.out.println();
-		System.out.println();
+		//System.out.println();
+		//System.out.println();
 		list.append("file18");
-		list.display();
-		System.out.println();
-		System.out.println();
+		//list.display();
+		//System.out.println();
+		//System.out.println();
 		list.append("file19");
-		list.display();
-		System.out.println();
-		System.out.println();
+		//list.display();
+		//System.out.println();
+		//System.out.println();
 		list.append("file17");
-		list.display();
-		System.out.println();
-		System.out.println();
+		//list.display();
+		//System.out.println();
+		//System.out.println();
 		list.append("file16");
-		list.display();
+		//list.display();
+		//list.delete("file16");
+		//list.delete("file17");
+		//list.delete("file1");
+		//list.delete(1);
+		//list.display();
 		/*
 		for (String file : list.listofFiles()) {
 			System.out.println(file);
@@ -72,8 +77,8 @@ public class TestFileLists {
 			System.out.println(location);
 		}
 		
+		System.out.println(list.getListofLocations());
 		*/
-		
 	}
 
 }
