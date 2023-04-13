@@ -87,11 +87,11 @@ public class FilesList {
 	
 	public void display() // for displaying list content
 	{
-		System.out.println("There are "+ getListSize() + " in the list.");
+		System.out.println("There are "+ getListSize() + " currently in stored on our system.");
 		FileNode current = head;
 		
 		while(current!=null) {
-			System.out.println(current.getFileName()+" at "+ current.getFileLocation() );
+			System.out.println(current.getFileName()+" stored in location "+ current.getFileLocation() );
 			current = current.nextNode;
 		}
 		System.out.println();
