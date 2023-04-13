@@ -24,7 +24,7 @@ public class MainMenu {
 		list.delete(fileName);
 		System.out.println(fileName);
 		//list.delete(9);
-		*/
+		 */
 	}
 
 	private static void mainMenu() {
@@ -141,15 +141,49 @@ public class MainMenu {
 				}finally {System.out.println("\n");}
 			}
 		}catch (Exception e) {
-			
+
 			return;
 		}	
 	}
 
 	private static void searchFile() 
 	{
-		// TODO Auto-generated method stub
-		System.out.println("search for a file option.");
+		// File search menu
+		System.out.println("\nSearch for a file option.");
+		boolean exist = true;
+		try {		
+			Scanner scannerC = new Scanner(System.in);	
+			while (exist) {			
+
+				System.out.println("\nEnter the name of the file you are searching for: ");
+
+				try {
+					String fileName = scannerC.nextLine();
+					//System.out.println("File to delete is "+fileName);
+					list.search(fileName);
+				}catch (Exception  e) {
+					System.out.println("An error has occured.");
+					exist = false;
+				}finally {}
+				System.out.println("Do you want to search for another file: (Y\\N)");
+				try {
+					String decision = scannerC.nextLine();
+					if (decision.toLowerCase().compareTo("y")==0 || decision.toLowerCase().compareTo("yes")==0) {
+						continue;
+					}else {
+						//scannerD.close();
+						exist = false;
+					}
+				}catch (Exception  e) {
+					System.out.println("An error has occured.");
+
+					exist = false;
+				}finally {System.out.println("\n");}
+			}
+
+		}catch (Exception e) {
+			return ;
+		}
 	}
 
 	private static void deleteFile() 
@@ -182,11 +216,11 @@ public class MainMenu {
 					}
 				}catch (Exception  e) {
 					System.out.println("An error has occured.");
-					
+
 					exist = false;
 				}finally {System.out.println("\n");}
 			}
-			
+
 		}catch (Exception e) {
 			return ;
 		}	
@@ -218,7 +252,7 @@ public class MainMenu {
 					}
 					if (!overWrite) {
 						list.append(fileName);
-						}
+					}
 				}catch (Exception  e) {
 					System.out.println("An error has occured.");
 					exist = false;
@@ -238,7 +272,7 @@ public class MainMenu {
 					exist = false;
 				}finally {System.out.println("\n");}
 			}
-			
+
 		}catch (Exception e) {
 			return ;
 		}	
@@ -246,10 +280,7 @@ public class MainMenu {
 
 	private static void intialization() 
 	{		
-		String string1 = "Hellow";
-		String string2 = "Hellow";
 
-		System.out.println(string1+" is before "+string2 +"? "+string1.compareTo(string2));
 
 
 		list = new FilesList();
@@ -277,7 +308,7 @@ public class MainMenu {
 		//System.out.println();
 		//System.out.println();
 		list.append("file40");
-		list.display();
+		//list.display();
 		//System.out.println();
 		//System.out.println();
 		list.append("file18");
