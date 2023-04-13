@@ -101,12 +101,13 @@ public class FilesList {
 	public FileNode delete(String fileName) 
 	// deleting file with file name
 	{
+		//System.out.println("In the method" + fileName);
 		if (head==null) {
 			System.out.println("Linked list is empty, nothing to delete");
 			return null;
 		}
 		
-		if (head.getFileName()==fileName) {
+		if (head.getFileName().toLowerCase().compareTo(fileName) == 0) {
 			FileNode temp = head;
 			head = head.nextNode;
 			listofLocations.offer(head.getFileLocation()); // recording empty location 
@@ -117,7 +118,7 @@ public class FilesList {
 		FileNode current = head;
 		FileNode previous = null;
 		
-		while(current!=null && current.getFileName()!=fileName) {
+		while(current!=null && current.getFileName().toLowerCase().compareTo(fileName) != 0) {
 			
 				previous = current;
 				current = current.nextNode;	
