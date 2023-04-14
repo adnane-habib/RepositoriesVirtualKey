@@ -1,6 +1,6 @@
 package repositories;
 
-
+//This class is mainly used to test the methods of FileList class.
 
 public class TestFileLists {
 

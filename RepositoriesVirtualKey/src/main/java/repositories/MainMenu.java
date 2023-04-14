@@ -2,6 +2,14 @@ package repositories;
 
 import java.util.Scanner;
 
+/*
+ * Prepared by Adnane Habib.
+ * mailto:@adnane_h@yahoo.fr
+ * Code for Simplilearn PG-FSD-OOP Course.
+ * April 2023.
+ * 
+ * */
+
 public class MainMenu {
 
 
@@ -28,12 +36,18 @@ public class MainMenu {
 	}
 
 	private static void mainMenu() {
-		// TODO Auto-generated method stub
+		// Main menu method.
 
 		Scanner scanner = new Scanner(System.in);
 		boolean exist = true;
 
 		while ( exist) {			
+			System.out.println("Welcome to LockedMe.com file management system.\n"
+					+ "beta release April 2023.\n"
+					+ "Principal developper: Adnane Habib (mailto: adnane_h@yahoo.fr).\\n"
+					+ "The main menu allows you to display your content and navigate to the submenu.\n"
+					+ "The submenu allows you to manage your files or go back to the main. menu\n\n");
+			
 			System.out.println("Choose an option:");
 			System.out.println("1. Display existing files.");
 			System.out.println("2. Add \\ delete \\ search a file.\n");
@@ -90,7 +104,7 @@ public class MainMenu {
 	}
 
 	private static void subMenu()
-	{
+	{	// Sub-menu method offering 3 choices and an option to return back to the main menu.
 		boolean exist = true;
 		System.out.println("\n\n\nYou are now in the submenu.");
 		try {		
@@ -148,7 +162,9 @@ public class MainMenu {
 
 	private static void searchFile() 
 	{
-		// File search menu
+		// File search menu. 
+		//Allowing the user to search for multiple files.
+		
 		System.out.println("\nSearch for a file option.");
 		boolean exist = true;
 		try {		
@@ -189,6 +205,8 @@ public class MainMenu {
 	private static void deleteFile() 
 	{
 		// File deletion menu
+		//Allowing the user to delete multiple files.
+		//Also preventing file over-write.
 		System.out.println("\nDelete file option.");
 		boolean exist = true;
 		try {		
@@ -228,7 +246,9 @@ public class MainMenu {
 
 	private static void addFile() 
 	{
-		// File deletion menu
+		// File add menu. 
+		//Allowing the user to add multiple files.
+		//Also preventing file over-write.
 		System.out.println("\nAdd file option.");
 		boolean exist = true;
 		boolean overWrite = false;
@@ -242,7 +262,7 @@ public class MainMenu {
 					String fileName = scannerA.nextLine();
 					//System.out.println("File to add is "+fileName);
 					for (String element : list.listofFiles()) {
-						if (element.compareTo(fileName)==0) {
+						if (element.compareTo(fileName)==0) { //Checking if the file exists to avoid over-write.
 							System.out.println("A similar file with the same name already exist.\n"
 									+ "Try to rename your file.");
 							overWrite = true;
@@ -281,7 +301,7 @@ public class MainMenu {
 	private static void intialization() 
 	{		
 
-
+		//This method is only used to populate the storage database with predefined files.
 
 		list = new FilesList();
 		list.append("file8");

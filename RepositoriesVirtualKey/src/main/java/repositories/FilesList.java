@@ -3,6 +3,8 @@ import java.util.LinkedList;
 import java.util.Queue;
 //import java.util.Arrays;
 
+// The class FileList creates a linked-list of FileList elements (Nodes with file name and storage location)
+// This approach was considered to avoid limiting the list size and to facilitate insertion sorting of elements
 public class FilesList {
 	private FileNode head;
 	private int fileCounts = 0; // for counting the list size
@@ -239,19 +241,18 @@ public class FilesList {
 		return listofLocations;		
 	}
 
-	public void search(String fileName) {
-		// TODO Auto-generated method stub
-		binarySearch(this.listofNodes(), "file4");
-
-
+	public void search(String fileName) 
+	{
+		// A class method to report the result of a search within the list
+		binarySearch(this.listofNodes(), "file4");// the method calls a binary search method
 	}
 	static void binarySearch(FileNode [] list, String target) 
-	{
+	{	//binary search method within the class 
 		int left = 0;
 		int right = list.length;		
 		while (left <=right) {
 			int middle= (left+right)/2;
-			if (list[middle].getFileName().compareTo(target)<0) {
+			if (list[middle].getFileName().compareTo(target)<0) { //compareTo() is used since strings (objects are checked)
 				left = middle+1;				
 			} else if (list[middle].getFileName().compareTo(target)>0) {
 				right = middle-1;
